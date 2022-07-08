@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'react-redux';
+import { useProductReducer } from './components/utils/reducers';
 import {
   ApolloClient,
   InMemoryCache,
@@ -14,7 +17,6 @@ import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
@@ -37,12 +39,22 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const initialState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: ''
+};
+
+const store = createStore(useProductReducer(initialState));
+
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Provider store={store}>
       <Router>
         <div>
-          <StoreProvider>
             <Nav />
             <Routes>
               <Route 
@@ -74,9 +86,9 @@ function App() {
                 element={<NoMatch />} 
               />
             </Routes>
-          </StoreProvider>
         </div>
       </Router>
+      </Provider>
     </ApolloProvider>
   );
 }
