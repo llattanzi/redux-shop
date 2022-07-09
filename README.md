@@ -2,7 +2,9 @@
   [![license](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT) 
 
   ## Description:
-  A MERN application for an e-commerce platform that leverages react redux to render a single page web application where users can browse products, add/remove them from a shopping cart, and complete purchases which are all managed using Apollo GraphQL.
+  A MERN application for an e-commerce platform that leverages react redux to render a single page web application where users can browse products, add/remove them from a shopping cart, and complete purchases which are all managed using Apollo GraphQL. See screenshot of the application below:
+  
+![redux-shop screenshot](https://user-images.githubusercontent.com/96707052/178089484-1f7adb52-d561-401c-870d-98af93301af3.JPG)
 
   ## Table of Contents
   - [Description](#description)
