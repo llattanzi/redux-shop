@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'react-redux';
-import { useProductReducer } from './components/utils/reducers';
+import store from './utils/store.js';
 import {
   ApolloClient,
   InMemoryCache,
@@ -38,16 +37,6 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
-const initialState = {
-  products: [],
-  cart: [],
-  cartOpen: false,
-  categories: [],
-  currentCategory: ''
-};
-
-const store = createStore(useProductReducer(initialState));
 
 function App() {
   return (
